@@ -8,29 +8,29 @@ const api_key = "3118e474a7e8108b5f9b6b3be1b8791d";
  * @param {string} URL API url 
  * @param {Function} callback callback
  */ 
-export const fetchData = function(URL, callback) {
+export const fetchData = function (URL, callback) {
     fetch(`${URL}&appid=${api_key}`)
-        .then(res => res.json())
-        .then(data => callback(data));
-}
-
-export const url = {
+      .then(res => res.json())
+      .then(data => callback(data));
+  }
+  
+  export const url = {
     currentWeather(lat, lon) {
-        return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${api_key}`;
+      return `https://api.openweathermap.org/data/2.5/weather?${lat}&${lon}&units=metric`
     },
     forecast(lat, lon) {
-        return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${api_key}`;
+      return `https://api.openweathermap.org/data/2.5/forecast?${lat}&${lon}&units=metric`
     },
     airPollution(lat, lon) {
-        return `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${api_key}`;
+      return `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}`
     },
     reverseGeo(lat, lon) {
-        return `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${api_key}`;
+      return `http://api.openweathermap.org/geo/1.0/reverse?${lat}&${lon}&limit=5`
     },
     /**
-     * @param {string} query search query eg: "London", "New Delhi"
-     */ 
+     * @param {string} query Search query e.g.: "London", "New York"
+     */
     geo(query) {
-        return `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${api_key}`;
+      return `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`
     }
 }
